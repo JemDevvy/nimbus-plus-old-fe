@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 interface SlideInItemProps {
-  children: React.ReactNode;
+  children: ReactNode;
   index?: number; // for mapped items
   direction?: "left" | "right"; // default for single items
   delayIncrement?: number; // ms between items
   startSequence?: boolean; // when parent says "start"
   onVisible?: () => void; // callback to parent to trigger next
+  durationMs?: string;
 }
 
 const SlideIn: React.FC<SlideInItemProps> = ({
@@ -16,6 +17,7 @@ const SlideIn: React.FC<SlideInItemProps> = ({
   delayIncrement = 1000,
   startSequence = false,
   onVisible,
+  durationMs = "duration-700",
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -50,17 +52,18 @@ const SlideIn: React.FC<SlideInItemProps> = ({
     }
   }, [inView, startSequence, delayIncrement, onVisible]);
 
-  const slideFrom = index !== undefined ? (index % 2 === 0 ? "left" : "right") : direction;
+  const slideFrom =
+    index !== undefined ? (index % 2 === 0 ? "left" : "right") : direction;
 
   return (
     <div
       ref={ref}
-      className={`transition-transform transition-opacity duration-700 ease-out ${
+      className={`transition-transform transition-opacity ${durationMs} ease-out ${
         isVisible
           ? "opacity-100 translate-x-0"
           : slideFrom === "left"
-          ? "opacity-0 -translate-x-20"
-          : "opacity-0 translate-x-20"
+            ? "opacity-0 -translate-x-20"
+            : "opacity-0 translate-x-20"
       }`}
     >
       {children}
