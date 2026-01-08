@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.status-dropdown button[role="combobox"] {
+  width: 100% !important;
+  min-width: 60px !important;
+  max-width: none !important;
+  justify-content: flex-start !important;
+}
+
+.status-dropdown [data-radix-select-trigger] {
+  width: 100% !important;
+  min-width: 60px !important;
+  max-width: none !important;
+}
+
+.status-dropdown [data-radix-select-value] {
+  width: 100% !important;
+  text-align: left !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+}
+
+:root {
+  color: #252733;
+  background-color: #F8F8F8;
+
+  --brand-primary: #00A8FF;
+  --brand-secondary: #00F7FE;
+  --brand-whiteback: #F8F8F8;
+  --brand-dark: #1E40AF;
+  --font-body: 'Mulish', sans-serif;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --background: #F8F8F8;
+  --foreground: 220 13% 18%; /* dark slate for better contrast */
+  --muted: 0 0% 97%;
+  --muted-foreground: 0 0% 45%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 15%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 15%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --primary: 210 85% 75%;
+  --primary-foreground: 0 0% 15%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 15%;
+  --accent: 175 60% 85%;
+  --accent-foreground: 0 0% 15%;
+  --destructive: 0 65% 70%;
+  --destructive-foreground: 0 0% 15%;
+  --ring: 210 85% 65%;
+  --radius: 0.5rem;
+  --sidebar-background: 0 0% 100%;
+  --sidebar-foreground: 0 0% 15%;
+  --sidebar-primary: 210 85% 65%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 0 0% 96%;
+  --sidebar-accent-foreground: 0 0% 15%;
+  --sidebar-border: 0 0% 90%;
+  --sidebar-ring: 210 85% 65%;
+  --success: 140 45% 70%;
+  --warning: 35 70% 75%;
+  --danger: 0 65% 70%;
+  --info: 210 85% 65%;
+  --blue-primary: 210 85% 65%;
+  --blue-secondary: 220 75% 70%;
+  --blue-light: 210 70% 80%;
+  --orange-primary: 35 70% 75%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%; /* keep light for dark mode */
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 213 90% 50%;
+  --primary-foreground: 213 100% 98%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 213 90% 50%;
+  --accent-foreground: 213 100% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --sidebar-background: 240 10% 3.9%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: 213 90% 50%;
+  --sidebar-primary-foreground: 213 100% 98%;
+  --sidebar-accent: 240 3.7% 15.9%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 240 3.7% 15.9%;
+  --sidebar-ring: 213 90% 50%;
+}
+
+@layer base {
+  /* Remove invalid border-border utility. If you want a border, use border, border-gray-200, etc. */
+  * {
+    /* @apply border; */
+  }
+
+  body {
+
+  }
+}
+
+@layer components {
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-200 rounded-md transition-colors relative;
+  }
+
+  .sidebar-item.active {
+    @apply bg-blue-100 text-blue-700 border-l-4 border-blue-500 font-medium;
+  }
+
+  .progress-bar {
+    @apply h-2 bg-gray-200 rounded-md;
+  }
+
+  .progress-value {
+    @apply h-2 rounded-md transition-all duration-300;
+  }
+}
