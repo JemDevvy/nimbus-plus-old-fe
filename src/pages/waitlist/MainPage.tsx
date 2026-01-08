@@ -21,7 +21,6 @@ import { AssignmentTurnedInOutlined, PersonOutlineRounded, PeopleAltOutlined, Se
 import FadeInSection from '../../components/waitlist/animations/FadeInSection';
 import SlideIn from '../../components/waitlist/animations/SlideIn';
 // import TypingText from '../../components/waitlist/animations/TypingText';
-import SmoothTyping from '../../components/waitlist/animations/SmoothTyping';
 import PopInItem from '../../components/waitlist/animations/PopInItem';
 // import TypingText from '../../components/ui/shadcn-io/typing-text/index';
 
@@ -137,40 +136,9 @@ export default function MainPage() {
             <main id="waitlist" className="mx-auto w-full sm:w-[90%] md:w-[80%] lg:w-[70%] h-[65vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] flex flex-col items-center justify-center text-center z-10">
                 
                 <h1 className="px-12 sm:px-0 font-bold text-3xl leading-snug sm:leading-snug md:text-5xl md:leading-snug lg:text-6xl lg:leading-snug whitespace-nowrap sm:whitespace-normal">
-                {/* <TypingText text="Finally, the platform that works how Architects &amp; Engineers actually work" speed={50} /> */}
-                {/* Finally, the platform <br className="md:hidden"/>that works <br className="hidden md:block"/>
+                Finally, the platform <br className="md:hidden"/>that works <br className="hidden md:block"/>
                 how{" "}<br className="md:hidden"/><span className="text-brand-primary">Architects &amp; Engineers</span>{" "} <br />
-                actually work */}
-                <SmoothTyping
-                    speed={20}
-                    segments={[
-                        {
-                        before: "",
-                        text: "Finally, the platform ",
-                        after: "",
-                        },
-                        {
-                        before: '<br class="md:hidden"/>',
-                        text: "that works ",
-                        after: "",
-                        },
-                        {
-                        before: '<br class="hidden md:block"/>',
-                        text: "how ",
-                        after: "",
-                        },
-                        {
-                        before: '<br class="md:hidden"/><span class="text-brand-primary">',
-                        text: "Architects & Engineers",
-                        after: "</span>",
-                        },
-                        {
-                        before: "<br />",
-                        text: "actually work",
-                        after: "",
-                        },
-                    ]}
-                />
+                actually work
                 </h1>
 
                 <FadeInSection>
