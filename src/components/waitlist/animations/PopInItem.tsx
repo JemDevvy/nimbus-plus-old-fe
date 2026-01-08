@@ -4,12 +4,14 @@ interface PopInItemProps {
   children: React.ReactNode;
   index: number; // needed for stagger
   delayIncrement?: number; // ms between items
+  durationMs?: string;
 }
 
 const PopInItem: React.FC<PopInItemProps> = ({
   children,
   index,
   delayIncrement = 400,
+  durationMs = "duration-500",
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -34,7 +36,7 @@ const PopInItem: React.FC<PopInItemProps> = ({
   return (
     <div
       ref={ref}
-      className={`transition-transform transition-opacity duration-500 ease-out ${
+      className={`transition-transform transition-opacity ${durationMs} ease-out ${
         isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"
       }`}
     >
