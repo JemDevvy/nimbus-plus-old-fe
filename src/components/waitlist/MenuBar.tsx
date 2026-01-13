@@ -22,7 +22,7 @@ export default function MenuBar({ onOpenForm }) {
             <Link to="/#waitlist">
             <button 
                 onClick={onOpenForm}
-                className="hidden sm:block
+                className="hidden sm:block font-heading
                 text-white font-bold px-5 py-1 rounded-full shadow-md
                 bg-gradient-to-r from-brand-primary from-40% to-brand-secondary
                 hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer">
@@ -30,7 +30,7 @@ export default function MenuBar({ onOpenForm }) {
             </button>
             <button 
                 onClick={onOpenForm}
-                className="block sm:hidden
+                className="block sm:hidden font-heading
                 text-white font-bold px-5 py-1 rounded-full shadow-md
                 bg-gradient-to-r from-brand-primary from-40% to-brand-secondary
                 hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer">

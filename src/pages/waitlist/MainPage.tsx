@@ -211,15 +211,10 @@ export default function MainPage() {
           id="waitlist"
           className="mx-auto w-full sm:w-[90%] md:w-[80%] lg:w-[70%] h-[65vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] flex flex-col items-center justify-center text-center z-10"
         >
-          <h1 className="px-12 sm:px-0 font-bold text-3xl leading-snug sm:leading-snug md:text-5xl md:leading-snug lg:text-6xl lg:leading-snug whitespace-nowrap sm:whitespace-normal">
-            Finally, the platform <br className="md:hidden" />
-            that works <br className="hidden md:block" />
-            how <br className="md:hidden" />
-            <span className="text-brand-primary">
-              Architects &amp; Engineers
-            </span>{" "}
-            <br />
-            actually work
+          <h1 className="px-4 sm:px-6 md:px-8 font-heading font-bold text-3xl leading-snug sm:leading-snug md:text-5xl md:leading-snug lg:text-6xl lg:leading-snug whitespace-normal">
+            Finally, <span className="text-brand-primary">one place</span> for
+            building <span className="text-brand-primary">design</span>{" "}
+            coordination
           </h1>
 
           <FadeInSection>
@@ -241,7 +236,7 @@ export default function MainPage() {
 
           {/* Email Form */}
           <form
-            className="px-10 sm:px-0 mt-5 sm:mt-20 sm:w-full lg:w-5xl xl:w-6xl space-y-4 "
+            className="px-4 sm:px-0 mt-5 sm:mt-20 sm:w-full lg:w-5xl xl:w-6xl space-y-4 "
             onSubmit={handleSubmit}
           >
             <div className="flex-col sm:flex sm:flex-row gap-4">
@@ -262,7 +257,7 @@ export default function MainPage() {
               />
               <button
                 type="submit"
-                className="px-10 py-3 text-white font-bold text-md sm:text-2xl rounded-full shadow-md
+                className="font-heading px-10 py-3 text-white font-bold text-md sm:text-2xl rounded-full shadow-md
                                     bg-gradient-to-r from-brand-primary from-40% to-brand-secondary
                                     hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer"
               >
@@ -290,7 +285,7 @@ export default function MainPage() {
         id="features"
       >
         <FadeInSection durationMs="duration-500">
-          <h1 className="mb-3 font-bold text-xl leading-tight sm:text-3xl sm:leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
+          <h1 className="mb-3 font-heading font-bold text-xl leading-tight sm:text-3xl sm:leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
             Just the <span className="text-brand-primary">Right Tools</span>,{" "}
             <br />
             in One Place
@@ -319,7 +314,7 @@ export default function MainPage() {
                   />
                 </div>
                 <div className="mt-auto ml-2">
-                  <h2 className="text-lg sm:text-2xl font-bold mb-2">
+                  <h2 className="text-lg sm:text-2xl font-heading font-bold mb-2">
                     {feature.title}
                   </h2>
                   <p className="text-sm sm:text-lg max-w-lg text-gray-600">
@@ -351,7 +346,7 @@ export default function MainPage() {
         <div className="hidden sm:block absolute right-0 h-[100vh] w-1/2 -z-10 pointer-events-none bg-[radial-gradient(circle_at_right,_rgba(59,130,246,0.2)_0%,_transparent_45%)]" />
 
         <FadeInSection durationMs="duration-500">
-          <h1 className="mx-auto mb-10 font-bold text-xl leading-tight sm:text-3xl sm:leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
+          <h1 className="mx-auto mb-10 font-heading font-bold text-xl leading-tight sm:text-3xl sm:leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
             Built with <span className="text-brand-primary">Design</span>,{" "}
             <br />
             at its Core
@@ -371,7 +366,7 @@ export default function MainPage() {
                   <div className="rounded-lg bg-brand-whiteback text-brand-primary w-fit h-fit mb-3">
                     {benefit.icon}
                   </div>
-                  <h2 className="text-md sm:text-xl font-bold mb-2">
+                  <h2 className="text-md sm:text-xl font-heading font-bold mb-2">
                     {benefit.title}
                   </h2>
                   <p className="text-sm sm:text-md text-gray-600">
@@ -387,11 +382,9 @@ export default function MainPage() {
       {/* Testimonials */}
       <div className="container mx-auto flex flex-col items-center justify-center text-center px-4">
         <FadeInSection>
-          <h1 className="sm:mt-20 sm:mb-3 font-bold text-xl leading-snug sm:text-3xl sm:leading-snug md:text-4xl md:leading-snug lg:text-5xl lg:leading-snug">
-            Hear What{" "}
-            <span className="text-brand-primary">Design Professionals</span>{" "}
-            <br />
-            Are Excited About Nimbus+
+          <h1 className="sm:mt-20 sm:mb-3 font-heading font-bold text-xl leading-snug sm:text-3xl sm:leading-snug md:text-4xl md:leading-snug lg:text-5xl lg:leading-snug">
+            What we're hearing from{" "}
+            <span className="text-brand-primary">Design Professionals</span>
           </h1>
         </FadeInSection>
       </div>
