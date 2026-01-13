@@ -74,6 +74,7 @@ const ScrollVideo = () => {
     <video
       ref={videoRef}
       src={Video}
+      autoPlay
       muted
       loop
       playsInline
