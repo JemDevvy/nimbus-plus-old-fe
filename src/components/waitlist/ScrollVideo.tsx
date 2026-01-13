@@ -1,10 +1,27 @@
 import { useRef, useEffect, useState } from "react";
 import Video from "../../assets/TrailerVideo.mp4";
+import MacVideo from "../../assets/TrailerVideo_mac.mp4";
+
+const checkIsSafari = () => {
+  if (typeof window === "undefined") return false;
+
+  const ua = navigator.userAgent;
+  const isWebKit = /AppleWebKit/.test(ua);
+  const isNotChrome = !/Chrome|Chromium|Edg/.test(ua);
+
+  return isWebKit && isNotChrome;
+};
 
 const ScrollVideo = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [error, setError] = useState(false);
   const [canPlay, setCanPlay] = useState(false);
+  const [isSafari, setIsSafari] = useState<boolean>(false);
+
+  useEffect(() => {
+    const safariCheck = checkIsSafari();
+    setIsSafari(safariCheck);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -73,7 +90,7 @@ const ScrollVideo = () => {
   return (
     <video
       ref={videoRef}
-      src={Video}
+      src={isSafari ? MacVideo : Video}
       muted
       loop
       playsInline
