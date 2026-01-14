@@ -27,7 +27,7 @@ const Toast: React.FC<ToastProps> = ({
       className={`fixed top-5 left-1/2 transform -translate-x-1/2 z-[1000] transition-all duration-300
         ${show ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}
         ${type === "error" ? "bg-red-400" : "bg-green-400"}
-        text-white px-6 py-3 rounded shadow-lg font-medium`}
+        text-white px-6 py-3 rounded shadow-lg font-medium font-heading`}
     >
       {message}
     </div>

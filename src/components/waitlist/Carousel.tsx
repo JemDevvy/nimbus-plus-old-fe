@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
 interface CardProps {
   name: string;
@@ -60,10 +60,50 @@ const cards: CardProps[] = [
   },
 ];
 
-// Triple the cards for seamless infinite loop (animation goes from 0% to -33.33%)
-const infiniteCards = [...cards, ...cards, ...cards];
+// Duplicate the cards for seamless infinite loop
+const infiniteCards = [...cards, ...cards];
 
 const Carousel: React.FC = () => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const animationFrameRef = useRef<number>();
+  const positionRef = useRef(0);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const cardWidth = 320; // w-80 = 320px
+    const gap = 24; // gap-6 = 24px
+    const cardWithGap = cardWidth + gap;
+    const totalWidth = cards.length * cardWithGap;
+    const speed = 0.5; // pixels per frame (adjust for speed)
+
+    const animate = () => {
+      positionRef.current += speed;
+
+      // When we've scrolled through one set of cards (50% of total), reset seamlessly
+      if (positionRef.current >= totalWidth) {
+        positionRef.current -= totalWidth; // Subtract instead of setting to 0 for smoother transition
+      }
+
+      if (track) {
+        // Use translate3d for hardware acceleration and smoother performance
+        track.style.transform = `translate3d(-${positionRef.current}px, 0, 0)`;
+      }
+
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    // Start animation immediately
+    animationFrameRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="relative w-3/5 lg:w-4/5 xl:w-3/5 overflow-hidden py-4 mb-36 items-center mx-auto font-heading">
       {/* Gradient overlays*/}
@@ -71,11 +111,15 @@ const Carousel: React.FC = () => {
       <div className="absolute right-0 top-0 h-full w-48 bg-gradient-to-l from-brand-whiteback to-transparent z-10 pointer-events-none" />
 
       {/* Carousel Track */}
-      <div className="flex items-center justify-center flex-row gap-6 animate-scroll-lg">
+      <div
+        ref={trackRef}
+        className="flex items-stretch flex-row gap-6"
+        style={{ willChange: "transform" }}
+      >
         {infiniteCards.map((card, index) => (
           <div
             key={index}
-            className="w-80 h-[330px] flex-shrink-0 flex flex-col rounded-2xl bg-white p-6 shadow-md text-left
+            className="w-80 flex-shrink-0 flex flex-col rounded-2xl bg-white p-6 shadow-md text-left
             hover:scale-105 transform transition-all duration-300 ease-in-out"
           >
             <p className="sm:mb-6 text-[12px] sm:text-lg">{card.review}</p>
