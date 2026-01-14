@@ -212,9 +212,8 @@ export default function MainPage() {
           className="mx-auto w-full sm:w-[90%] md:w-[80%] lg:w-[70%] h-[65vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] flex flex-col items-center justify-center text-center z-10"
         >
           <h1 className="px-4 sm:px-6 md:px-8 font-heading font-bold text-3xl leading-snug sm:leading-snug md:text-5xl md:leading-snug lg:text-6xl lg:leading-snug whitespace-normal">
-            Finally, <span className="text-brand-primary">one place</span> for
-            building <span className="text-brand-primary">design</span>{" "}
-            coordination
+            Be among the first to use{" "}
+            <span className="text-brand-primary">Nimbus+</span>
           </h1>
 
           <FadeInSection>
@@ -383,8 +382,7 @@ export default function MainPage() {
       <div className="container mx-auto flex flex-col items-center justify-center text-center px-4">
         <FadeInSection>
           <h1 className="sm:mt-20 sm:mb-3 font-heading font-bold text-xl leading-snug sm:text-3xl sm:leading-snug md:text-4xl md:leading-snug lg:text-5xl lg:leading-snug">
-            What we're hearing from{" "}
-            <br />
+            What we're hearing from <br />
             <span className="text-brand-primary">Design Professionals</span>
           </h1>
         </FadeInSection>
