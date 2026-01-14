@@ -212,13 +212,14 @@ export default function MainPage() {
           className="mx-auto w-full sm:w-[90%] md:w-[80%] lg:w-[70%] h-[65vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] flex flex-col items-center justify-center text-center z-10"
         >
           <h1 className="px-4 sm:px-6 md:px-8 font-heading font-bold text-3xl leading-snug sm:leading-snug md:text-5xl md:leading-snug lg:text-6xl lg:leading-snug whitespace-normal">
-            Be among the first to use{" "}
-            <span className="text-brand-primary">Nimbus+</span>
+            Finally, <span className="text-brand-primary">one place</span> for
+            building <span className="text-brand-primary">design</span>{" "}
+            coordination
           </h1>
 
           <FadeInSection>
             <p className="mt-4 text-gray-600 text-md sm:text-lg md:text-xl lg:text-2xl font-heading">
-              Be among the First Design Professionals shaping Nimbus+
+              Be among the first to use Nimbus+
               {/* Already <span className="text-brand-primary font-bold"><RollingNumber value={3472} duration={1500} /></span> AEC pioneers have joined <span className="visible sm:hidden"><br /></span> – will you? */}
               {/* <TypingText text="Be among the First Design Professionals shaping Nimbus+" speed={50} /> */}
               {/* <TypingText
