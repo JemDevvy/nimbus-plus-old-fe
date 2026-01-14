@@ -219,7 +219,7 @@ export default function MainPage() {
 
           <FadeInSection>
             <p className="mt-4 text-gray-600 text-md sm:text-lg md:text-xl lg:text-2xl font-heading">
-              Be among the first to use Nimbus+
+              Be among one of the first to us Nimbus+
               {/* Already <span className="text-brand-primary font-bold"><RollingNumber value={3472} duration={1500} /></span> AEC pioneers have joined <span className="visible sm:hidden"><br /></span> – will you? */}
               {/* <TypingText text="Be among the First Design Professionals shaping Nimbus+" speed={50} /> */}
               {/* <TypingText
