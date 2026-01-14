@@ -384,6 +384,7 @@ export default function MainPage() {
         <FadeInSection>
           <h1 className="sm:mt-20 sm:mb-3 font-heading font-bold text-xl leading-snug sm:text-3xl sm:leading-snug md:text-4xl md:leading-snug lg:text-5xl lg:leading-snug">
             What we're hearing from{" "}
+            <br />
             <span className="text-brand-primary">Design Professionals</span>
           </h1>
         </FadeInSection>

@@ -52,11 +52,11 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       </button>
 
       {open && (
-        <ul className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded shadow-lg max-h-60 overflow-auto">
+        <ul className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded shadow-lg max-h-60 overflow-auto font-heading">
           {options.map((option) => (
             <li
               key={option.value}
-              className="px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer"
+              className="px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer font-heading"
               onClick={() => handleSelect(option)}
             >
               {option.label}
