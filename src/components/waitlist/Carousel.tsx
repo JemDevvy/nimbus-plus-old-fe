@@ -125,16 +125,7 @@ const Carousel: React.FC = () => {
             <p className="sm:mb-6 text-[12px] sm:text-lg">{card.review}</p>
 
             <div className="mt-auto flex flex-row items-center gap-4">
-              <div>
-                <div className="inline-block h-14 w-14 overflow-hidden border-2 rounded-full border-brand-primary">
-                  <img src="https://placehold.net/avatar.png" alt="Avatar" />
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-l font-bold align-bottom">{card.name}</h2>
-                {/* <p className="text-lg">{card.role}</p> */}
-              </div>
+              <h2 className="text-l font-bold align-bottom">{card.name}</h2>
             </div>
           </div>
         ))}

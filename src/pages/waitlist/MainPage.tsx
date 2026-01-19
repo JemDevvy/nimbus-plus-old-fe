@@ -30,7 +30,7 @@ import PopInItem from "../../components/waitlist/animations/PopInItem";
 // import TypingText from '../../components/ui/shadcn-io/typing-text/index';
 
 // React Functions
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Content Arrays
 const features = [
@@ -112,6 +112,30 @@ export default function MainPage() {
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1024
+  );
+
+  // Detect window width changes
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Determine which carousel to show based on window width
+  const getCarouselComponent = () => {
+    if (windowWidth < 1024) {
+      // Mobile & Tablet: < 1024px
+      return <Carouselmobile />;
+    } else {
+      // Desktop: >= 1024px
+      return <Carousel />;
+    }
+  };
 
   const handleVisible = () => setCurrentIndex((prev) => prev + 1);
 
@@ -390,12 +414,7 @@ export default function MainPage() {
       </div>
 
       <FadeInSection>
-        <div className="hidden sm:block">
-          <Carousel />
-        </div>
-        <div className="block sm:hidden">
-          <Carouselmobile />
-        </div>
+        {getCarouselComponent()}
       </FadeInSection>
 
       <FadeInSection>
