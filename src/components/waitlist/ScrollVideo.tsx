@@ -12,15 +12,26 @@ const checkIsSafari = () => {
   return isWebKit && isNotChrome;
 };
 
+const checkIsMobile = () => {
+  if (typeof window === "undefined") return false;
+  
+  const ua = navigator.userAgent;
+  // Check for mobile devices
+  return /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+};
+
 const ScrollVideo = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [error, setError] = useState(false);
   const [canPlay, setCanPlay] = useState(false);
   const [isSafari, setIsSafari] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
     const safariCheck = checkIsSafari();
+    const mobileCheck = checkIsMobile();
     setIsSafari(safariCheck);
+    setIsMobile(mobileCheck);
   }, []);
 
   useEffect(() => {
@@ -90,7 +101,7 @@ const ScrollVideo = () => {
   return (
     <video
       ref={videoRef}
-      src={isSafari ? MacVideo : Video}
+      src={isSafari && !isMobile ? MacVideo : Video}
       muted
       loop
       playsInline
