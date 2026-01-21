@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from "react";
-import Video from "../../assets/TrailerVideo.mp4";
 import MacVideo from "../../assets/TrailerVideo_mac.mp4";
 
 const checkIsSafari = () => {
@@ -14,16 +13,17 @@ const checkIsSafari = () => {
 
 const checkIsMobile = () => {
   if (typeof window === "undefined") return false;
-  
+
   const ua = navigator.userAgent;
   // Check for mobile devices
-  return /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+  return /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(
+    ua,
+  );
 };
 
 const ScrollVideo = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [error, setError] = useState(false);
-  const [canPlay, setCanPlay] = useState(false);
   const [isSafari, setIsSafari] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
@@ -32,43 +32,62 @@ const ScrollVideo = () => {
     const mobileCheck = checkIsMobile();
     setIsSafari(safariCheck);
     setIsMobile(mobileCheck);
+    console.log("Device detection:", {
+      isSafari: safariCheck,
+      isMobile: mobileCheck,
+    });
   }, []);
+
+  // Reload video when source changes
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      console.log("Video source changed, reloading");
+      video.load();
+    }
+  }, [isSafari, isMobile]);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
+    console.log("Video element initialized, src:", video.src);
+
     // Handle video errors
     const handleError = (e: Event) => {
-      console.error("Video playback error:", e);
+      const errorDetails = {
+        code: video.error?.code,
+        message: video.error?.message,
+        src: video.src,
+        currentSrc: video.currentSrc,
+        networkState: video.networkState,
+        readyState: video.readyState,
+      };
+      console.error("Video playback error:", errorDetails);
+      alert(`Video Error: ${video.error?.code} - ${video.error?.message}`);
       setError(true);
     };
 
-    const handleCanPlay = () => {
-      setCanPlay(true);
+    const handleLoadedData = () => {
+      console.log("Video data loaded successfully");
     };
 
     video.addEventListener("error", handleError);
-    video.addEventListener("canplay", handleCanPlay);
-
-    // Try to load the video
-    video.load();
+    video.addEventListener("loadeddata", handleLoadedData);
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && canPlay) {
-            // Use a promise chain to handle autoplay restrictions
+          if (entry.isIntersecting) {
+            console.log("Video is visible, attempting to play");
             const playPromise = video.play();
             if (playPromise !== undefined) {
               playPromise
                 .then(() => {
-                  // Autoplay started successfully
+                  console.log("Video playing successfully");
                 })
                 .catch((error) => {
-                  // Autoplay was prevented - this is expected on some devices
                   console.log("Autoplay prevented:", error);
-                  // Optionally, you could show a play button here
                 });
             }
           } else {
@@ -76,7 +95,7 @@ const ScrollVideo = () => {
           }
         });
       },
-      { threshold: 0.5 } // Play when 50% visible
+      { threshold: 0.1 },
     );
 
     observer.observe(video);
@@ -84,9 +103,9 @@ const ScrollVideo = () => {
     return () => {
       observer.unobserve(video);
       video.removeEventListener("error", handleError);
-      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("loadeddata", handleLoadedData);
     };
-  }, [canPlay]);
+  }, []);
 
   if (error) {
     return (
@@ -98,17 +117,28 @@ const ScrollVideo = () => {
     );
   }
 
+  // Use Mac video for all devices - it's better encoded and smaller (18MB vs 50MB)
+  const videoSrc = MacVideo;
+
+  console.log("Rendering video with src:", videoSrc);
+  console.log("User Agent:", navigator.userAgent);
+  console.log("Device detection:", { isSafari, isMobile });
+
   return (
     <video
       ref={videoRef}
-      src={isSafari && !isMobile ? MacVideo : Video}
       muted
       loop
       playsInline
-      preload="auto"
+      preload="metadata"
       className="w-full md:h-fit rounded-lg"
       style={{ objectFit: "contain" }}
-    />
+      controls={false}
+      autoPlay={false}
+    >
+      <source src={videoSrc} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
   );
 };
 

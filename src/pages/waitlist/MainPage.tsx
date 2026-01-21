@@ -113,7 +113,7 @@ export default function MainPage() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 1024
+    typeof window !== "undefined" ? window.innerWidth : 1024,
   );
 
   // Detect window width changes
@@ -413,9 +413,7 @@ export default function MainPage() {
         </FadeInSection>
       </div>
 
-      <FadeInSection>
-        {getCarouselComponent()}
-      </FadeInSection>
+      <FadeInSection>{getCarouselComponent()}</FadeInSection>
 
       <FadeInSection>
         <WaitlistBanner onOpenForm={handleOpenForm} />
