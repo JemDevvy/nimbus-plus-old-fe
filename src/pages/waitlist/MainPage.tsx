@@ -294,12 +294,16 @@ export default function MainPage() {
 
       {/* Intro Video */}
       <FadeInSection>
-        <div className="relative h-[20vh] w-[90vw] sm:h-full sm:w-[80vw] mx-auto lg:-mt-5 xl:-mt-10 mb-10 lg:mb-15 xl:mb-24 flex items-center justify-center rounded-2xl overflow-hidden">
+        <div className="relative h-[34vh] w-full sm:h-[45vh] lg:h-[55vh] mb-10 lg:mb-15 xl:mb-24 flex items-center justify-center overflow-hidden">
           <ScrollVideo />
+          {/* Top gradient */}
+          <div className="pointer-events-none absolute left-0 top-0 w-full h-12 bg-gradient-to-b from-brand-whiteback to-transparent z-10" />
+          {/* Bottom gradient */}
+          <div className="pointer-events-none absolute left-0 bottom-0 w-full h-12 bg-gradient-to-t from-brand-whiteback to-transparent z-10" />
           {/* Left gradient */}
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-8 bg-gradient-to-r from-brand-whiteback to-transparent" />
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-brand-whiteback to-transparent z-10" />
           {/* Right gradient */}
-          <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-brand-whiteback to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-brand-whiteback to-transparent z-10" />
         </div>
       </FadeInSection>
 
