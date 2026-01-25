@@ -45,7 +45,7 @@ const ScrollVideo = () => {
 
   if (error) {
     return (
-      <div className="w-full md:h-fit rounded-lg bg-gray-200 flex items-center justify-center p-8">
+      <div className="w-full h-full bg-gray-200 flex items-center justify-center p-8">
         <p className="text-gray-600 text-center">
           Video playback is not supported on this device.
         </p>
@@ -63,8 +63,8 @@ const ScrollVideo = () => {
       loop
       playsInline
       preload="auto"
-      className="w-full md:h-fit rounded-lg"
-      style={{ objectFit: "contain" }}
+      className="w-full h-full"
+      style={{ objectFit: "cover" }}
     >
       <source src={videoSrc} type="video/mp4" />
       Your browser does not support the video tag.
