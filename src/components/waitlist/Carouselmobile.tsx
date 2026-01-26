@@ -198,10 +198,30 @@ const Carouselmobile: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-10/12 overflow-hidden py-4 mb-36 items-center mx-auto font-heading">
-      {/* Gradient overlays*/}
-      <div className="absolute z-10 left-0 top-0 h-[30vh] w-[10vw] bg-gradient-to-r from-brand-whiteback to-transparent pointer-events-none" />
-      <div className="absolute z-10 right-0 top-0 h-[30vh] w-[10vw] bg-gradient-to-l from-brand-whiteback to-transparent pointer-events-none" />
+    <div className="relative w-10/12 overflow-hidden py-4 mb-8 sm:mb-36 items-center mx-auto font-heading">
+      {/* Gradient overlays - full height with vertical and horizontal fading */}
+      {/* Left gradient overlay */}
+      <div 
+        className="absolute z-10 left-0 top-0 bottom-0 w-[12vw] pointer-events-none"
+        style={{
+          background: 'linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.85) 25%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%)',
+          maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.7) 90%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.7) 90%, transparent 100%)',
+          backdropFilter: 'blur(1.5px)',
+          WebkitBackdropFilter: 'blur(1.5px)',
+        }}
+      />
+      {/* Right gradient overlay */}
+      <div 
+        className="absolute z-10 right-0 top-0 bottom-0 w-[12vw] pointer-events-none"
+        style={{
+          background: 'linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.85) 25%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%)',
+          maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.7) 90%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.7) 90%, transparent 100%)',
+          backdropFilter: 'blur(1.5px)',
+          WebkitBackdropFilter: 'blur(1.5px)',
+        }}
+      />
 
       {/* Carousel Track - using transform like desktop */}
       <div
