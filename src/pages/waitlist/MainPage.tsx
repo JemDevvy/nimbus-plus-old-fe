@@ -238,7 +238,7 @@ export default function MainPage() {
           <h1 className="px-4 sm:px-6 md:px-8 font-heading font-bold text-3xl leading-snug sm:leading-snug md:text-5xl md:leading-snug lg:text-6xl lg:leading-snug whitespace-normal">
             Finally, <span className="text-brand-primary">one place</span> for
             building <span className="text-brand-primary">design</span>{" "}
-            coordinationss
+            coordination
           </h1>
 
           <FadeInSection>
