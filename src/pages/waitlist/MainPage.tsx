@@ -217,11 +217,11 @@ export default function MainPage() {
       <MenuBar onOpenForm={handleOpenForm} />
 
       {/* Gradient Backgrounds */}
-      <div className="sm:hidden absolute left-0 h-[75vh] sm:h-[100vh] w-[25vw] bg-gradient-to-r from-brand-primary/20 to-transparent -z-10 pointer-events-none">
+      <div className="sm:hidden absolute left-0 h-[70vh] sm:h-[100vh] w-[25vw] bg-gradient-to-r from-brand-primary/20 to-transparent -z-10 pointer-events-none">
         <div className="h-20 w-[30vw] bg-gradient-to-b from-brand-whiteback to-transparent z-10 pointer-events-none" />
         <div className="absolute bottom-0 h-20 w-[30vw] bg-gradient-to-t from-brand-whiteback to-transparent z-10 pointer-events-none" />
       </div>
-      <div className="sm:hidden absolute right-0 h-[75vh] sm:h-[100vh] w-[25vw] bg-gradient-to-l from-brand-primary/20 to-transparent -z-10 pointer-events-none">
+      <div className="sm:hidden absolute right-0 h-[70vh] sm:h-[100vh] w-[25vw] bg-gradient-to-l from-brand-primary/20 to-transparent -z-10 pointer-events-none">
         <div className="h-20 w-[30vw] bg-gradient-to-b from-brand-whiteback to-transparent z-10 pointer-events-none" />
         <div className="absolute bottom-0 h-20 w-[30vw] bg-gradient-to-t from-brand-whiteback to-transparent z-10 pointer-events-none" />
       </div>
@@ -238,7 +238,7 @@ export default function MainPage() {
           <h1 className="px-4 sm:px-6 md:px-8 font-heading font-bold text-3xl leading-snug sm:leading-snug md:text-5xl md:leading-snug lg:text-6xl lg:leading-snug whitespace-normal">
             Finally, <span className="text-brand-primary">one place</span> for
             building <span className="text-brand-primary">design</span>{" "}
-            coordination
+            coordinationss
           </h1>
 
           <FadeInSection>
