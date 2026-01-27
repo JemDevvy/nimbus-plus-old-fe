@@ -4,7 +4,7 @@ import Line2 from '../../assets/Ellipse2.png';
 
 const WaitlistBanner: React.FC = ({ onOpenForm }) => {
   return (
-    <div className="w-[95%] sm:w-4/5 lg:w-4/5 lg:max-w-5xl xl:w-6xl rounded-xl bg-white py-20 lg:py-20 mt-10 mb-20 mx-auto text-center flex flex-col items-center justify-between left-0 relative overflow-hidden shadow-lg ">
+    <div className="w-[95%] sm:w-4/5 lg:w-4/5 lg:max-w-5xl xl:w-6xl rounded-xl bg-white py-20 lg:py-20 mt-12 sm:mt-10 mb-12 sm:mb-20 mx-auto text-center flex flex-col items-center justify-between left-0 relative overflow-hidden shadow-lg ">
         <img
             src={Line1}
             alt="Decorative Lines"

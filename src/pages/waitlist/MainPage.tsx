@@ -217,11 +217,11 @@ export default function MainPage() {
       <MenuBar onOpenForm={handleOpenForm} />
 
       {/* Gradient Backgrounds */}
-      <div className="sm:hidden absolute left-0 h-[70vh] sm:h-[100vh] w-[25vw] bg-gradient-to-r from-brand-primary/20 to-transparent -z-10 pointer-events-none">
+      <div className="sm:hidden absolute left-0 h-[65vh] sm:h-[100vh] w-[25vw] bg-gradient-to-r from-brand-primary/20 to-transparent -z-10 pointer-events-none">
         <div className="h-20 w-[30vw] bg-gradient-to-b from-brand-whiteback to-transparent z-10 pointer-events-none" />
         <div className="absolute bottom-0 h-20 w-[30vw] bg-gradient-to-t from-brand-whiteback to-transparent z-10 pointer-events-none" />
       </div>
-      <div className="sm:hidden absolute right-0 h-[70vh] sm:h-[100vh] w-[25vw] bg-gradient-to-l from-brand-primary/20 to-transparent -z-10 pointer-events-none">
+      <div className="sm:hidden absolute right-0 h-[65vh] sm:h-[100vh] w-[25vw] bg-gradient-to-l from-brand-primary/20 to-transparent -z-10 pointer-events-none">
         <div className="h-20 w-[30vw] bg-gradient-to-b from-brand-whiteback to-transparent z-10 pointer-events-none" />
         <div className="absolute bottom-0 h-20 w-[30vw] bg-gradient-to-t from-brand-whiteback to-transparent z-10 pointer-events-none" />
       </div>
@@ -233,7 +233,7 @@ export default function MainPage() {
       <FadeInSection>
         <main
           id="waitlist"
-          className="mx-auto w-full sm:w-[90%] md:w-[80%] lg:w-[70%] h-[65vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] flex flex-col items-center justify-center text-center z-10"
+          className="mx-auto w-full sm:w-[90%] md:w-[80%] lg:w-[70%] h-[55vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] flex flex-col items-center justify-center text-center z-10 mb-12 sm:mb-0"
         >
           <h1 className="px-4 sm:px-6 md:px-8 font-heading font-bold text-3xl leading-snug sm:leading-snug md:text-5xl md:leading-snug lg:text-6xl lg:leading-snug whitespace-normal">
             Finally, <span className="text-brand-primary">one place</span> for
@@ -294,7 +294,7 @@ export default function MainPage() {
 
       {/* Intro Video */}
       <FadeInSection>
-        <div className="relative h-[34vh] w-full sm:h-[45vh] lg:h-[55vh] mb-10 lg:mb-15 xl:mb-24 flex items-center justify-center overflow-hidden">
+        <div className="relative h-[34vh] w-full sm:h-[45vh] lg:h-[55vh] mb-12 lg:mb-15 xl:mb-24 flex items-center justify-center overflow-hidden">
           <ScrollVideo />
           {/* Top gradient */}
           <div className="pointer-events-none absolute left-0 top-0 w-full h-12 bg-gradient-to-b from-brand-whiteback to-transparent z-10" />
@@ -358,7 +358,7 @@ export default function MainPage() {
 
       {/* Benefits Section */}
       <div
-        className="container mx-auto flex flex-col text-center items-center justify-center p-4 mb-20"
+        className="container mx-auto flex flex-col text-center items-center justify-center p-4 mb-12 sm:mb-20"
         id="benefits"
       >
         <div className="sm:hidden absolute left-0 h-[170vh] sm:h-[50vw] w-[15vw] bg-gradient-to-r from-brand-primary/20 to-transparent -z-10 pointer-events-none">
@@ -408,9 +408,9 @@ export default function MainPage() {
       </div>
 
       {/* Testimonials */}
-      <div className="container mx-auto flex flex-col items-center justify-center text-center px-4">
+      <div className="container mx-auto flex flex-col items-center justify-center text-center px-4 mb-12 sm:mb-0">
         <FadeInSection>
-          <h1 className="sm:mt-20 sm:mb-3 font-heading font-bold text-xl leading-snug sm:text-3xl sm:leading-snug md:text-4xl md:leading-snug lg:text-5xl lg:leading-snug">
+          <h1 className="mb-3 sm:mt-20 sm:mb-3 font-heading font-bold text-xl leading-snug sm:text-3xl sm:leading-snug md:text-4xl md:leading-snug lg:text-5xl lg:leading-snug">
             What we're hearing from <br />
             <span className="text-brand-primary">Design Professionals</span>
           </h1>
