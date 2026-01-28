@@ -198,7 +198,7 @@ const Carouselmobile: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-10/12 overflow-hidden py-4 mb-12 sm:mb-36 items-center mx-auto font-heading">
+    <div className="relative w-10/12 overflow-hidden py-4 mb-12 sm:mb-36 md:mb-20 lg:mb-36 items-center mx-auto font-heading">
       {/* Gradient overlays - full height with vertical and horizontal fading */}
       {/* Left gradient overlay */}
       <div 
