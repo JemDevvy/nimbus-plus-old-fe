@@ -292,9 +292,9 @@ export default function MainPage() {
         </main>
       </FadeInSection>
 
-      {/* Intro Video */}
+      {/* Intro Video - full width + auto height on desktop */}
       <FadeInSection>
-        <div className="relative h-[34vh] w-full sm:h-[45vh] lg:h-[55vh] mb-20 lg:mb-15 xl:mb-24 flex items-center justify-center overflow-hidden">
+        <div className="relative h-[34vh] w-full sm:h-[45vh] lg:h-auto lg:w-full mb-20 lg:mb-15 xl:mb-24 flex items-center justify-center overflow-hidden">
           <ScrollVideo />
           {/* Top gradient */}
           <div className="pointer-events-none absolute left-0 top-0 w-full h-12 bg-gradient-to-b from-brand-whiteback to-transparent z-10" />
