@@ -63,8 +63,7 @@ const ScrollVideo = () => {
       loop
       playsInline
       preload="auto"
-      className="w-full h-full"
-      style={{ objectFit: "cover" }}
+      className="w-full h-full object-cover lg:w-full lg:h-auto lg:object-contain"
     >
       <source src={videoSrc} type="video/mp4" />
       Your browser does not support the video tag.
