@@ -1,15 +1,24 @@
-import { useEffect, useState, FormEvent } from 'react';
+import { useEffect, useState } from 'react';
+import type { FormEvent } from 'react';
 
 interface WaitlistEntry {
   email: string;
-  waitlistRole: string;
-  firstName: string;
-  lastName: string;
+  waitlistRole: string | null;
+  firstName: string | null;
+  lastName: string | null;
+}
+
+interface PaginationInfo {
+  page: number;
+  limit: number;
+  totalCount: number;
+  totalPages: number;
 }
 
 interface WaitlistCountResponse {
   count: number;
   waitlist: WaitlistEntry[];
+  pagination: PaginationInfo;
 }
 
 export default function WaitlistCount() {
@@ -17,8 +26,11 @@ export default function WaitlistCount() {
   const [passwordInput, setPasswordInput] = useState('');
   const [passwordError, setPasswordError] = useState<string | null>(null);
 
+  const PAGE_SIZE = 10;
   const [count, setCount] = useState<number | null>(null);
   const [waitlist, setWaitlist] = useState<WaitlistEntry[]>([]);
+  const [pagination, setPagination] = useState<PaginationInfo | null>(null);
+  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -41,10 +53,17 @@ export default function WaitlistCount() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/waitlist-count`, {
-          method: 'GET',
-          credentials: 'include',
+        const params = new URLSearchParams({
+          page: String(page),
+          limit: String(PAGE_SIZE),
         });
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/waitlist-count?${params}`,
+          {
+            method: 'GET',
+            credentials: 'include',
+          }
+        );
 
         if (!res.ok) {
           throw new Error('Failed to fetch waitlist count');
@@ -53,6 +72,7 @@ export default function WaitlistCount() {
         const data: WaitlistCountResponse = await res.json();
         setCount(data.count);
         setWaitlist(data.waitlist ?? []);
+        setPagination(data.pagination ?? null);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
       } finally {
@@ -61,7 +81,7 @@ export default function WaitlistCount() {
     };
 
     fetchData();
-  }, [isUnlocked]);
+  }, [isUnlocked, page]);
 
   // Password gate: show prompt until user submits a password
   if (!isUnlocked) {
@@ -121,9 +141,10 @@ export default function WaitlistCount() {
           </div>
 
           {waitlist.length > 0 && (
-            <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-              <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
+            <div className="space-y-4">
+              <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
                       <th
@@ -155,21 +176,21 @@ export default function WaitlistCount() {
                   <tbody className="divide-y divide-gray-200 bg-white">
                     {waitlist.map((entry, index) => (
                       <tr
-                        key={`${entry.email}-${entry.waitlistRole}-${index}`}
+                        key={`${entry.email}-${entry.waitlistRole ?? ''}-${index}`}
                         className="hover:bg-gray-50 transition-colors"
                       >
                         <td className="whitespace-nowrap px-4 py-3 text-sm text-gray-900">
                           {entry.email}
                         </td>
                         <td className="whitespace-nowrap px-4 py-3 text-sm text-gray-700">
-                          {entry.firstName}
+                          {entry.firstName ?? '—'}
                         </td>
                         <td className="whitespace-nowrap px-4 py-3 text-sm text-gray-700">
-                          {entry.lastName}
+                          {entry.lastName ?? '—'}
                         </td>
                         <td className="whitespace-nowrap px-4 py-3">
                           <span className="inline-flex rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 capitalize">
-                            {entry.waitlistRole}
+                            {entry.waitlistRole ?? '—'}
                           </span>
                         </td>
                       </tr>
@@ -177,6 +198,44 @@ export default function WaitlistCount() {
                   </tbody>
                 </table>
               </div>
+            </div>
+
+              {pagination && (
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-sm">
+                  <p className="text-sm text-gray-600">
+                    Page{' '}
+                    <span className="font-medium">{pagination.page}</span> of{' '}
+                    <span className="font-medium">{pagination.totalPages}</span>
+                    {' · '}
+                    <span className="font-medium">{pagination.totalCount}</span>{' '}
+                    total entries
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setPage((p) => Math.max(1, p - 1))}
+                      disabled={pagination.page <= 1 || loading}
+                      className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-50"
+                    >
+                      Previous
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setPage((p) =>
+                          Math.min(pagination.totalPages, p + 1)
+                        )
+                      }
+                      disabled={
+                        pagination.page >= pagination.totalPages || loading
+                      }
+                      className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-50"
+                    >
+                      Next
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
