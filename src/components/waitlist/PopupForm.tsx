@@ -147,11 +147,11 @@ const PopupForm: React.FC<PopupProps> = ({
 
         {email === "" ? (
           <h2 className="text-xl font-semibold mb-4 font-heading">
-            Join Our Waitlist
+            Register interest
           </h2>
         ) : (
           <h2 className="text-xl font-semibold mb-4 font-heading">
-            Complete Sign Up
+            Register your interest
           </h2>
         )}
 

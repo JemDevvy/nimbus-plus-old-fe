@@ -14,7 +14,7 @@ const Footer = ({ onOpenForm }) => {
             Features
           </Link>
           <button className="font-heading hover:text-brand-primary transition" onClick={onOpenForm}>   
-            Waitlist
+            Register interest
           </button>
         </nav>
 

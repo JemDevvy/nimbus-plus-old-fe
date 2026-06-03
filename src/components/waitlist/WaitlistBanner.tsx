@@ -32,7 +32,7 @@ const WaitlistBanner: React.FC = ({ onOpenForm }) => {
                 px-4 py-2 sm:px-8 sm:py-3 rounded-full shadow-md mt-5 xl:mt-0
                 bg-gradient-to-r from-brand-primary from-40% to-brand-secondary
                 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out whitespace-nowrap" >
-                Join the Waitlist
+                Register interest
         </button>
     </div>
   );
