@@ -285,7 +285,7 @@ export default function MainPage() {
                                     bg-gradient-to-r from-brand-primary from-40% to-brand-secondary
                                     hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer"
               >
-                Join the Waitlist
+                Register interest
               </button>
             </div>
           </form>
